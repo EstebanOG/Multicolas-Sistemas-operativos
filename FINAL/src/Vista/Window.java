@@ -27,15 +27,15 @@ public class Window extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
 		setSize((int) (Toolkit.getDefaultToolkit().getScreenSize().width * 1),
-				(int) (Toolkit.getDefaultToolkit().getScreenSize().height * 0.84));
+				(int) (Toolkit.getDefaultToolkit().getScreenSize().height * 0.9));
 		setLocationRelativeTo(null);
-
+                // graphyc
 		panelTableGantt = new GanttPanel(this, "D. Gantt");
-		add(panelTableGantt, BorderLayout.SOUTH);
+		add(panelTableGantt, BorderLayout.PAGE_START);
                 
 		JPanel panelStatus = new JPanel();
                 
-
+                // tables 
 		panelTableRRQueue = new TablePanel(this, "C. RR");
 		initTableStatusPanel(panelTableRRQueue, new String[] { "Proceso", "T. Llegada", "T. Rafaga" });
 		panelStatus.add(panelTableRRQueue);
@@ -53,20 +53,20 @@ public class Window extends JFrame {
 		initTableStatusPanel(panelTableLockQueue, new String[] { "Proceso", "T. Llegada", "T. Rafaga" });
 		panelStatus.add(panelTableLockQueue);
                
-		add(panelStatus, BorderLayout.EAST);
+		add(panelStatus, BorderLayout.CENTER);
 
 		panelTable = new TablePanel(this, "Table");
 		panelTable.setTableModel(new DefaultTableModel(COLUMN_NAME, 0));
 		add(panelTable, BorderLayout.WEST);
-
+                //Buttons
 		panelAction = new ActionPanel(this);
-		add(panelAction, BorderLayout.NORTH);
+		add(panelAction, BorderLayout.SOUTH);
 
 		setResizable(false);
 	}
 
 	private void initTableStatusPanel(TablePanel table, String[] columnName) {
-		table.setPreferredSize(new Dimension((int) (getSize().width / 6.5), (int) (getSize().height * 0.42)));
+		table.setPreferredSize(new Dimension((int) (getSize().width / 6.5), (int) (getSize().height * 0.23)));
 		table.setTableModel(new DefaultTableModel(columnName, 0));
 	}
 
